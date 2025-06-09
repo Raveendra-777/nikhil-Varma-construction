@@ -518,8 +518,8 @@ VILLA
         const avgDisplay = document.getElementById("ar");
 
         data.forEach(row => {
-          const [name, rating, comment, average, date] = row;
-
+          const [name, rating, comment, average] = row;
+            const date = row[4];
           if (!name.trim() && !comment.trim()) return;
 
           avgDisplay.innerText = `Average Rating: ${average}★`;
