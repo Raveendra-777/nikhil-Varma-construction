@@ -519,7 +519,8 @@ VILLA
 
         data.forEach(row => {
           const [name, rating, comment, average] = row;
-            const date = row[4];
+            const dat = row[4];
+            const date = dat.replace("T18:30:00.000Z","");
           if (!name.trim() && !comment.trim()) return;
 
           avgDisplay.innerText = `Average Rating: ${average}★`;
