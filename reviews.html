@@ -184,6 +184,7 @@
       </select>
       <textarea class="form-textarea" name="comment" id="comment" placeholder="Write your review here..." rows="4" required></textarea>
       <input style="display:none;" name="average" type="text" id="average" value="=AVERAGE(B:B)" readonly />
+      <input style="display:none;" name="date" type="text" id="date" value="" readonly />
       <button class="form-button" id="submit" type="submit">Submit Review</button>
     </form>
 
@@ -201,6 +202,13 @@
   </div>
 
   <script>
+    const today = new Date();
+
+  // Format the date as YYYY-MM-DD
+  const formattedDate = today.toISOString().split('T')[0];
+
+  // Set the value of the hidden input
+  document.getElementById('date').value = formattedDate;
     const formScriptURL = 'https://script.google.com/macros/s/AKfycbzWu8Zrf04-G5J4BLG7gD2yJvKA1_B_Ez08KYF7ZbOlNSU4NnVIRmIc-V0H0wwqpPVW/exec';
     const dataScriptURL = 'https://script.google.com/macros/s/AKfycbzM3nps_TnHmlLYy_4aRbjTAkdZ5zElIPzdRPx3NjnoOF6mxc4TJm0hdWuyWdVS8JkF/exec';
     const form = document.forms['submit-to-google-sheet'];
