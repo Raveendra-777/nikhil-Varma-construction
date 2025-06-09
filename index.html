@@ -384,15 +384,18 @@ VILLA
       font-family: 'Segoe UI', sans-serif;
       background-color: #f7f9fc;
       padding: 30px;
-      margin: 0;
-      color: #333;
-      display: flex;
-      justify-content: center;
+      
+      
+      
+      
     }
 
     .container {
       max-width: 600px;
       width: 100%;
+      align-items: center;
+      padding : 20px;
+      display:math;
     }
 
     .average-rating {
@@ -429,9 +432,9 @@ VILLA
     .form-button {
       width: 100%;
       padding: 10px;
-      background-color: #007bff;
+      margin-top: 10px;
       color: white;
-      border: none;
+      border: none 1px solid #ccc;
       font-weight: bold;
       border-radius: 6px;
       font-size: 14px;
@@ -447,6 +450,19 @@ VILLA
       text-align: center;
       font-weight: bold;
       margin-top: 15px;
+    }
+    .form-button{
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-weight: bold;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      
     }
 
     .reviews-container {
@@ -477,44 +493,22 @@ VILLA
       margin: 0;
     }
   </style>
+  <div class="body">
   <div class="container">
     <div class="average-rating" id="ar">Average Rating: 0★</div>
 
-    <h2 class="heading">Leave a Review</h2>
-
-    <form class="review-form" name="submit-to-google-sheet">
-      <input class="form-input" name="name" type="text" id="name" placeholder="Your Name" required />
-      <select class="form-select" name="rating" id="rating">
-        <option value="5">★★★★★</option>
-        <option value="4">★★★★☆</option>
-        <option value="3">★★★☆☆</option>
-        <option value="2">★★☆☆☆</option>
-        <option value="1">★☆☆☆☆</option>
-      </select>
-      <textarea class="form-textarea" name="comment" id="comment" placeholder="Write your review here..." rows="4" required></textarea>
-      <input style="display:none;" name="average" type="text" id="average" value="=AVERAGE(B:B)" readonly />
-      <button class="form-button" id="submit" type="submit">Submit Review</button>
-    </form>
-
+    
     <div class="status-message" id="status"></div>
     <div class="reviews-container" id="reviews"></div>
+    <a href="reviews.html"><button class="form-button">Leave a Review</button></a>
   </div>
-
+</div>
   <script>
     const formScriptURL = 'https://script.google.com/macros/s/AKfycbzWu8Zrf04-G5J4BLG7gD2yJvKA1_B_Ez08KYF7ZbOlNSU4NnVIRmIc-V0H0wwqpPVW/exec';
     const dataScriptURL = 'https://script.google.com/macros/s/AKfycbzM3nps_TnHmlLYy_4aRbjTAkdZ5zElIPzdRPx3NjnoOF6mxc4TJm0hdWuyWdVS8JkF/exec';
     const form = document.forms['submit-to-google-sheet'];
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      fetch(formScriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-          console.log('Success!', response);
-          form.reset();
-          location.reload();
-        })
-        .catch(error => console.error('Error!', error.message));
-    });
+    
 
     // Load Reviews
     fetch(dataScriptURL)
