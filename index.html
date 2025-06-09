@@ -518,7 +518,7 @@ VILLA
         const avgDisplay = document.getElementById("ar");
 
         data.forEach(row => {
-          const [name, rating, comment, average] = row;
+          const [name, rating, comment, average, date] = row;
 
           if (!name.trim() && !comment.trim()) return;
 
@@ -528,6 +528,7 @@ VILLA
           card.classList.add("review-card");
           card.innerHTML = `
             <div class="review-name"><strong>${name}</strong></div>
+            <p>${date}</p>
             <div class="review-stars">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</div>
             <p class="review-comment">${comment}</p>
           `;
