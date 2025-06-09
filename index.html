@@ -496,7 +496,62 @@ VILLA
   <div class="body">
   <div class="container">
     <div class="average-rating" id="ar">Average Rating: 0★</div>
+    <style>
+   .ask:hover{
+    background-color: #007bff;
+  }
+.ask {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+} 
+</style>
+<button class = "ask" onclick="shareMessage()">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align:middle;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="18" cy="5" r="3"/>
+    <circle cx="6" cy="12" r="3"/>
+    <circle cx="18" cy="19" r="3"/>
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+  </svg>
+  Ask for Review
+</button>
 
+<script>
+function shareMessage() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Ask Review',
+      text: `Hello Customer,
+
+We hope you had an amazing experience with us.
+
+Please click here to leave a review for Industrial Building Construction Service:
+
+https://www.nikhilvarmaconstructions.com/reviews.html
+
+From
+Nikhil Varma Constructions, Bengaluru
+IndiaMART Verified Supplier
+
+Call us at +91-9844052227`, // <-- Replace with actual number
+       // optional but helpful
+    })
+    .then(() => console.log('Shared successfully'))
+    .catch((error) => console.error('Share failed:', error));
+  } else {
+    alert('Sharing not supported on this browser');
+  }
+}
+</script>
     
     <div class="status-message" id="status"></div>
     <div class="reviews-container" id="reviews"></div>
