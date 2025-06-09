@@ -1,0 +1,239 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Page</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828883.png" type="image/png">
+  </head>
+<body class="body">
+<style>
+    .body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f9fc;
+      padding: 30px;
+      margin: 0;
+      color: #333;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .average-rating {
+      font-size: 1.3em;
+      color: #ff9800;
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .heading {
+      text-align: center;
+    }
+
+    .review-form {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .form-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-weight: bold;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .form-button:hover {
+      background-color: #0056b3;
+    }
+
+    .status-message {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .reviews-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .review-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .review-name {
+      font-size: 1.1em;
+    }
+
+    .review-stars {
+      color: #FFA500;
+      font-size: 20px;
+      margin: 5px 0;
+    }
+
+    .review-comment {
+      margin: 0;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .info-message {
+      margin: 0;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .ok-button {
+      display: block;
+      margin: 10px auto 0;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .ok-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <div class="container">
+    <div class="average-rating" id="ar">Average Rating: 0★</div>
+
+    <h2 class="heading">Leave a Review</h2>
+
+    <form class="review-form" name="submit-to-google-sheet">
+      <input class="form-input" name="name" type="text" id="name" placeholder="Your Name" required />
+      <select class="form-select" name="rating" id="rating">
+        <option value="5">★★★★★</option>
+        <option value="4">★★★★☆</option>
+        <option value="3">★★★☆☆</option>
+        <option value="2">★★☆☆☆</option>
+        <option value="1">★☆☆☆☆</option>
+      </select>
+      <textarea class="form-textarea" name="comment" id="comment" placeholder="Write your review here..." rows="4" required></textarea>
+      <input style="display:none;" name="average" type="text" id="average" value="=AVERAGE(B:B)" readonly />
+      <button class="form-button" id="submit" type="submit">Submit Review</button>
+    </form>
+
+    <div class="status-message" id="status"></div>
+    <div class="reviews-container" id="reviews"></div>
+  </div>
+
+  <!-- Info Modal -->
+  <div id="info-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-modal">&times;</span>
+      <p class="info-message" id="info-message"></p>
+      <a href="#" class="ok-button" id="ok-link">OK</a>
+    </div>
+  </div>
+
+  <script>
+    const formScriptURL = 'https://script.google.com/macros/s/AKfycbzWu8Zrf04-G5J4BLG7gD2yJvKA1_B_Ez08KYF7ZbOlNSU4NnVIRmIc-V0H0wwqpPVW/exec';
+    const dataScriptURL = 'https://script.google.com/macros/s/AKfycbzM3nps_TnHmlLYy_4aRbjTAkdZ5zElIPzdRPx3NjnoOF6mxc4TJm0hdWuyWdVS8JkF/exec';
+    const form = document.forms['submit-to-google-sheet'];
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(formScriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          console.log('Success!', response);
+          form.reset();
+          document.getElementById('status').innerHTML = '<strong>Thank you for your review!</strong>';
+          console.info('Thank you for your review!');
+          showInfo('Thank you for your review!', 'https://www.nikhilvarmaconstructions.com'); // Change URL as needed
+        })
+        .catch(error => console.error('Error!', error.message));
+    });
+
+    function showInfo(message, href) {
+      document.getElementById('info-message').innerHTML = message;
+      const okLink = document.getElementById('ok-link');
+      okLink.href = href || "#";
+      okLink.onclick = function() {
+        document.getElementById('info-modal').style.display = 'none';
+        // Optionally, navigate to the link:
+        if (href) window.location.href = href;
+        return false; // Prevent default link behavior
+      };
+      document.getElementById('info-modal').style.display = 'flex';
+    }
+
+    // Load Reviews
+    
+  </script>
+</body>
+
+</html>
