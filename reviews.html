@@ -178,11 +178,12 @@
     <form class="review-form" name="submit-to-google-sheet">
       <input class="form-input" name="name" type="text" id="name" placeholder="Your Name" required />
       <select class="form-select" name="rating" id="rating">
-        <option value="5">★★★★★</option>
-        <option value="4">★★★★☆</option>
-        <option value="3">★★★☆☆</option>
-        <option value="2">★★☆☆☆</option>
-        <option value="1">★☆☆☆☆</option>
+        <option value="5">Rating</option>
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐☆</option>
+        <option value="3">⭐⭐⭐☆☆</option>
+        <option value="2">⭐⭐☆☆☆</option>
+        <option value="1">⭐☆☆☆☆</option>
       </select>
       <textarea class="form-textarea" name="comment" id="comment" placeholder="Write your review here..." rows="4" required></textarea>
       <input style="display:none;" name="average" type="text" id="average" value="=AVERAGE(B:B)" readonly />
@@ -222,8 +223,8 @@
           console.log('Success!', response);
           form.reset();
           document.getElementById('status').innerHTML = '<strong>Thank you for your review!</strong>';
-          console.info('Thank you for your review!');
-          showInfo('Thank you for your review!', 'https://www.nikhilvarmaconstructions.com'); // Change URL as needed
+          console.info('Thank you for your feedback!');
+          showInfo('Thank you for your feedback!', 'https://www.nikhilvarmaconstructions.com'); // Change URL as needed
         })
         .catch(error => console.error('Error!', error.message));
     });
