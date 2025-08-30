@@ -315,12 +315,38 @@ background-repeat: no-repeat; /* Prevents the image from repeating */
 <h2 align="right">GSTIN:29AARFN8171E1ZQ<h2>
 </div>
     <body>
-  <div class="gal" >
-    <img src="v1.jpg" style="border-color:yellow;margin-right:20px" border="3">
-      <img src="v2.jpg" style="border-color:yellow;margin-right:20px" border="3">
-      <img src="v3.jpg" style="border-color:yellow;margin-right:20px" border="3">
-      <img src="v4.jpg" style="border-color:yellow;margin-right:20px" border="3">
-  </div>
+  <!-- pageB.html -->
+<style>
+.gal{
+	display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+}
+ .gal img{
+      
+    max-width: 100%;
+    height: auto;
+    display: block;
+border-color:yellow;
+margin-right:20px;
+box-sizing: border-box;
+    }
+</style>
+<div id="gallery" class="gal"></div>
+
+
+<script>
+  const gallery = document.getElementById('gallery');
+  const images = JSON.parse(localStorage.getItem('images') || '[]');
+
+  images.forEach(src => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.maxWidth = '500px';
+    img.style.border = '2px solid yellow';
+    gallery.appendChild(img);
+  });
+</script>
     
     
 
@@ -448,3 +474,4 @@ height:auto;
 </footer>
 <br><br><br><br><br>
 </html>
+
