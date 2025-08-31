@@ -332,23 +332,76 @@ margin-right:20px;
 box-sizing: border-box;
     }
 </style>
-<div id="gallery" class="gal"></div>
 
 
-<script>
-  const gallery = document.getElementById('gallery');
-  const images = JSON.parse(localStorage.getItem('images') || '[]');
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    .gal{
+	display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+}
+ .gal img{
+      
+    max-width: 100%;
+    height: auto;
+    display: block;
+border-color:yellow;
+margin-right:20px;
+box-sizing: border-box;
+    }
 
-  images.forEach(src => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.style.maxWidth = '500px';
-    img.style.border = '2px solid yellow';
-    gallery.appendChild(img);
-  });
-</script>
-    
-    
+  </style>
+
+  <div class="gal" id="gallery"></div>
+
+  <script>
+    const SUPABASE_URL = "https://umpfvulyoispjlvsyajv.supabase.co"; // your project URL
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVtcGZ2dWx5b2lzcGpsdnN5YWp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NTIwMTEsImV4cCI6MjA3MjEyODAxMX0.KnA11CfA4UQs88Bnqb-cg8gjFXlCknZbIgRELY1udI0"; // replace with your anon key
+    const BUCKET = "gallery"; // your bucket name
+    const FOLDER = "main"; // change if different, or set to "" if files are at root
+
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function loadImages() {
+      try {
+        const { data, error } = await client
+          .storage
+          .from(BUCKET)
+          .list(FOLDER, { limit: 100 });
+
+        if (error) throw error;
+        if (!data || data.length === 0) {
+          document.getElementById("gallery").innerHTML = "<p>No images found.</p>";
+          return;
+        }
+
+        const gallery = document.getElementById("gallery");
+        gallery.innerHTML = "";
+
+        data.forEach(file => {
+          if (file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+            const { data: publicUrlData } = client
+              .storage
+              .from(BUCKET)
+              .getPublicUrl(FOLDER ? `${FOLDER}/${file.name}` : file.name);
+
+            const img = document.createElement("img");
+            img.style.maxWidth = "500px"
+            img.style.border = "2px solid yellow";
+            img.src = publicUrlData.publicUrl;
+            gallery.appendChild(img);
+          }
+        });
+      } catch (err) {
+        console.error("Error loading images:", err);
+      }
+    }
+
+    loadImages();
+  </script>
+
+
 
     <!-- About Page Content -->
     
@@ -474,5 +527,6 @@ height:auto;
 </footer>
 <br><br><br><br><br>
 </html>
+
 
 
