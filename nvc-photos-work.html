@@ -338,52 +338,45 @@ document.getElementById('authForm').addEventListener('submit', function (e) {
   });
 
 </script>
-<div id="gallery" style="display: none;"></div>
-<input type="file" id="upload" style="display: none;" multiple />
 
-<script>
-  function loadImages() {
-    const gallery = document.getElementById('gallery');
-    gallery.innerHTML = '';
-    const images = JSON.parse(localStorage.getItem('images2') || '[]');
+  <div style = "display: none;">
+  <input type="file" id="fileInput" />
+  <button onclick="uploadFile()">Upload</button>
 
-    images.forEach((src, index) => {
-      const wrapper = document.createElement('div');
-      const img = document.createElement('img');
-      const btn = document.createElement('button');
+  <script>
+    const supabase = window.supabase.createClient(
+      "https://umpfvulyoispjlvsyajv.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVtcGZ2dWx5b2lzcGpsdnN5YWp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NTIwMTEsImV4cCI6MjA3MjEyODAxMX0.KnA11CfA4UQs88Bnqb-cg8gjFXlCknZbIgRELY1udI0"
+    );
 
-      img.src = src;
-      img.style.maxWidth = '200px';
-      btn.textContent = 'Delete';
-      btn.onclick = () => {
-        images.splice(index, 1);
-        localStorage.setItem('images2', JSON.stringify(images));
-        loadImages();
-      };
+    async function uploadFile() {
+      const fileInput = document.getElementById("fileInput");
+      const file = fileInput.files[0];
 
-      wrapper.appendChild(img);
-      wrapper.appendChild(btn);
-      gallery.appendChild(wrapper);
-    });
-  }
+      if (!file) {
+        alert("Please select a file.");
+        return;
+      }
 
-  document.getElementById('upload').addEventListener('change', function () {
-    const files = Array.from(this.files);
-    const images = JSON.parse(localStorage.getItem('images2') || '[]');
+      const uniqueName = `${Date.now()}-${file.name}`;
+      console.log("Uploading file:", uniqueName);
 
-    files.forEach(file => {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        images.push(e.target.result);
-        localStorage.setItem('images2', JSON.stringify(images));
-        loadImages();
-      };
-      reader.readAsDataURL(file);
-    });
-  });
+      const { data, error } = await supabase.storage
+        .from("gallery2//main")   // bucket name
+        .upload(uniqueName, file);
 
-  loadImages();
-</script>
+      console.log("Upload result:", { data, error });
+
+      if (error) {
+        alert("Upload failed: " + error.message);
+      } else {
+        alert("Upload success: " + data.path);
+      }
+    }
+  </script>
+  </div>
+
+
 
 </body>
 <footer class="footer">
