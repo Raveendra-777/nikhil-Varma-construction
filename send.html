@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WhatsApp Auto Message</title>
+</head>
+<body>
+  <h2>Receive a WhaApp Message</h2>
+  <input type="text" id="phone" placeholder="Enter your WhatsApp number">
+  <button onclick="notifyUser()">Get Message</button>
+
+  <script>
+    async function notifyUser() {
+      let phone = document.getElementById("phone").value.trim();
+      if (!phone) {
+        alert("Please enter your WhatsApp number");
+        return;
+      }
+
+      let response = await fetch("https://script.google.com/macros/s/AKfycbwewXglqz24ACQjlkSIKNZPC5OkXvLW7a8PxzIt77Lc2w2hMb3e6zZJZSCjTifiME9e/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone })
+      });
+
+      let result = await response.json();
+      console.log(result);
+
+      alert("Check your WhatsApp!");
+    }
+  </script>
+</body>
+</html>
