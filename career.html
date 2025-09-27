@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -158,8 +159,57 @@ footer a:hover {
 </div>
 
 <body>
+<style>
+    /* Hide hamburger by default */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
 
+/* Mobile styles */
+@media (max-width: 768px) {
+  header nav {
+    display: none; /* hide menu by default on mobile */
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(90deg, #d32f2f, #f57c00);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    text-align: center;
+  }
+
+  header nav a {
+    margin: 10px 0;
+  }
+
+  .hamburger {
+    display: block; /* show hamburger on mobile */
+  }
+
+  header {
+    position: relative; /* so menu is positioned correctly */
+  }
+}
+
+</style>
   <header>
+   <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+ <script>
+function toggleMenu() {
+  const nav = document.querySelector("header nav");
+  if (nav.style.display === "flex") {
+    nav.style.display = "none";
+  } else {
+    nav.style.display = "flex";
+  }
+}
+</script>
+
     <img src="https://www.nikhilvarmaconstructions.com/NIKHIL VARMA CONSTRUCTIONS.jpg" alt="NVC Logo">
     <nav>
       <a href="https://www.nikhilvarmaconstructions.com/">Home</a>
@@ -172,10 +222,8 @@ footer a:hover {
       <a href="gallery.html">Gallery</a>
       
     </nav>
-    <h2 align="right">GSTIN:29AARFN8171E1ZQ<h2></h2>
+    <h2 align="right" style="word-break: break-word;">GSTIN:29AARFN8171E1ZQ<h2></h2>
   </header>
-
-  
 
   <section>
     <section class="body">
@@ -371,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     </script>
-  
+  </section>
 <section id="contact" class="section">
     <h2 style="text-align:center;">Get in Touch</h2>
     <h1 style="color: green">Contact no: +91 9844052227</h1>
@@ -379,9 +427,11 @@ document.addEventListener('DOMContentLoaded', function () {
             class="shadowed-img"><img src="https://imgur.com/DrrVIiU.jpg" width="50" height="50"><br></a>
         <a href="tel:+9844052227"><img src="https://imgur.com/nAs3yS9.jpg" class="shadowed-img"
                 width="50" height="50"></a>
-        <h2 style="color: blue">Email: <h2 style="color: green" align="center">
-                <a href="mailto:praveenkumar@nikhilvarmaconstructions.com">praveenkumar@nikhilvarmaconstructions.com</a></h2>
-        </h2>
+        <p style="text-align:center; margin: 10px 0; font-size: 16px; word-break: break-word;">
+    Email: <a href="mailto:praveenkumar@nikhilvarmaconstructions.com" style="color: green; text-decoration: underline;">
+      praveenkumar@nikhilvarmaconstructions.com
+    </a>
+  </p>
     </div>
   </section>
   <footer>
