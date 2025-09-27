@@ -1,27 +1,202 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-       <meta property="og:url" content="https://www.nikhilvarmaconstructions.com/">
-    <meta property="og:image" content="https://www.nikhilvarmaconstructions.com/NIKHIL VARMA CONSTRUCTIONS.jpg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:url" content="https://www.nikhilvarmaconstructions.com/">
+    <meta property="og:image" content="https://www.nikhilvarmaconstructions.com/download.ico">
     <link rel="icon" href="https://www.nikhilvarmaconstructions.com/NIKHIL VARMA CONSTRUCTIONS.jpg">
     <meta name="msapplication-TitleImage" content="https://www.nikhilvarmaconstructions.com/NIKHIL VARMA CONSTRUCTIONS.jpg"/>
-    <title>Review Page</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828883.png" type="image/png">
-  </head>
-<body class="body">
-<style>
-    .body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f7f9fc;
-      padding: 30px;
+  <title>Nikhil Varma Constructions</title>
+  <style>
+    body {
       margin: 0;
+      font-family: Arial, sans-serif;
       color: #333;
-      display: flex;
-      justify-content: center;
+      background: #fff;
     }
+
+    header {
+      background: linear-gradient(90deg, #d32f2f, #f57c00);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: url('construction-bg.jpg') center/cover no-repeat;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin: 0;
+      color: #d32f2f;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #d32f2f;
+    }
+
+    .section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center; /* this centers all inline text */
+}
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #d32f2f;
+    }
+
+    footer {
+      background: #363636;
+      color: white;
+      text-align: center;
+      
+      padding: 20px;
+    }
+    footer a {
+  color: #ff9800;       /* orange links */
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 500;
+}
+
+footer a:hover {
+  color: #d32f2f;       /* red hover */
+  text-decoration: underline;
+}
+/* Preloader overlay */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Lego bricks animation */
+.lego-preloader {
+  display: flex;
+  gap: 10px;
+}
+
+.brick {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  animation: bounce 1s infinite alternate;
+}
+
+.brick.red { background: #d32f2f; animation-delay: 0s; }
+.brick.blue { background: #1976d2; animation-delay: 0.2s; }
+.brick.yellow { background: #fbc02d; animation-delay: 0.4s; }
+.brick.green { background: #388e3c; animation-delay: 0.6s; }
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+
+  </style>
+</head>
+<div id="preloader">
+  <div class="lego-preloader">
+    <div class="brick red"></div>
+    <div class="brick blue"></div>
+    <div class="brick yellow"></div>
+    <div class="brick green"></div>
+  </div>
+</div>
+
+<body>
+
+  <header>
+    <img src="https://www.nikhilvarmaconstructions.com/NIKHIL VARMA CONSTRUCTIONS.jpg" alt="NVC Logo">
+    <nav>
+      <a href="https://www.nikhilvarmaconstructions.com/">Home</a>
+      
+      <a href="profile.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="career.html">Career</a>
+      <a href="vision&mission.html">Vision & Mission</a>
+      <a href="about.html">About Us</a>
+      <a href="gallery.html">Gallery</a>
+      
+    </nav>
+    <h2 align="right">GSTIN:29AARFN8171E1ZQ<h2></h2>
+  </header>
+
+  
+
+ <style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f9fc;
+  margin: 0;
+  color: #333;
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  min-height: 100vh;       /* full viewport height */
+  padding: 30px;
+  box-sizing: border-box;
+  flex-direction: column;  /* stack vertically if needed */
+}
 
     .container {
       max-width: 600px;
       width: 100%;
+      align-items: center;
+      align-self: auto;
     }
 
     .average-rating {
@@ -170,7 +345,7 @@
       background-color: #0056b3;
     }
   </style>
-  <div class="container">
+  <div align="center" class="container">
     
 
     <h2 class="heading">Leave a Review</h2>
@@ -245,6 +420,73 @@
     // Load Reviews
     
   </script>
-</body>
+  
+  
+<section id="contact" class="section">
+    <h2 style="text-align:center;">Get in Touch</h2>
+    <h1 style="color: green">Contact no: +91 9844052227</h1>
+        <a href="https://api.whatsapp.com/send/?phone=9844052227&text&type=phone_number&app_absent=0"
+            class="shadowed-img"><img src="https://imgur.com/DrrVIiU.jpg" width="50" height="50"><br></a>
+        <a href="tel:+9844052227"><img src="https://imgur.com/nAs3yS9.jpg" class="shadowed-img"
+                width="50" height="50"></a>
+        <h2 style="color: blue">Email: <h2 style="color: green" align="center">
+                <a href="mailto:praveenkumar@nikhilvarmaconstructions.com">praveenkumar@nikhilvarmaconstructions.com</a></h2>
+        </h2>
+    </div>
+  </section>
+  <footer>
+    <h2> Quick Links</h2>
+     <nav>
+        <a href="profile.html">Profile</a>
+    </nav>
 
+    <div>
+        <a href="https://www.nikhilvarmaconstructions.com/">Home</a>
+    </div>
+
+    <div>
+        <a href="about.html">About</a>
+    </div>
+
+    <div>
+        <a href="vision&misson.html">Vision &amp; mission</a>
+    </div>
+
+    <div>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div>
+        <a href="career.html">Career</a>
+    </div>
+    <div>
+      <a href="gallery.html">Gallery</a>
+  </div>
+    </div>
+
+    <div class="contact-info">
+        <a href="https://www.google.com/maps/search/%23102,+SRI+SAI+ELENA,+7th+Cross+Right,+Alfa+garden,+K+R+Puram,+Bangagalore-560036./@13.0079665,77.7185704,17z/data=!3m1!4b1?entry=ttu">
+            <h1><br><br>OFFICE: #102, SRI SAI ELENA, 7th Cross Right, Alfa garden,
+                K R Puram, Bangalore-560036.</h1>
+        </a>
+<a href='https://drive.google.com/file/d/1Dq8ft8OkQ1WINlyYJVxkdavla1o0PTyF/view?usp=drive_link'><img src='9.png'></a><br>
+<a href="https://drive.google.com/file/d/1nkXLiYF4-q0eDSh01Ei7Ef5a82rrSuDv/view?usp=drive_link"><img src='10.png' class='msme'></a>
+<style>
+.msme{
+width:200px;
+height:auto;
+}
+</style>
+        
+    
+</footer>
+<script>
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    preloader.classList.add('hidden');
+  });
+</script>
+
+</body>
 </html>
+
