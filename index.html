@@ -636,6 +636,121 @@ function toggleMenu() {
       margin: 0;
     }
   </style>
+    <section>
+   <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #d32f2f, #f57c00);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .process-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .rocket {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .rocket img {
+      width: 80px;
+      animation: launch 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes launch {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .step {
+      background: white;
+      border-left: 6px solid #d32f2f;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .step::before {
+      content: attr(data-step);
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      background: #f57c00;
+      color: white;
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 1.2em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .step h2 {
+      margin-top: 0;
+      color: #d32f2f;
+    }
+
+    footer {
+      background: #363636;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      .step::before {
+        top: -15px;
+        left: -15px;
+        font-size: 1em;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+
+  <div style="background-color:#d32f2f; width:50px; height:50px;position:absolute;right:0"></div>
+  <h1 style="color:#d32f2f;padding-right:60px" align="right">OUR PROCESS</h1>
+  <div class="process-container">
+    
+    <div class="step" data-step="1">
+      <h2>Client Consultation</h2>
+      <p>We begin with a detailed client consultation and site inspection to assess requirements, expectations, and project feasibility.</p>
+    </div>
+
+    <div class="step" data-step="2">
+      <h2>Planning & Estimation</h2>
+      <p>Based on the site study, we provide a clear quotation, timeline, and project plan tailored to your budget and goals.</p>
+    </div>
+
+    <div class="step" data-step="3">
+      <h2>Execution & Monitoring</h2>
+      <p>Our skilled team carries out the construction with precision, while our supervision team ensures quality and safety at every stage.</p>
+    </div>
+
+    <div class="step" data-step="4">
+      <h2>Launch & Marketing</h2>
+      <p>We conduct thorough quality checks before timely handover, along with post-completion maintenance guidance.</p>
+    </div>
+  </div>
+</section>
   <div class="body">
   <div class="container">
     <div class="average-rating" id="ar">Average Rating: 0★</div>
@@ -806,3 +921,4 @@ height:auto;
 
 </body>
 </html>
+
