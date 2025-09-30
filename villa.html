@@ -1,13 +1,10 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:url" content="https://www.nikhilvarmaconstructions.com/">
     <meta property="og:image" content="https://www.nikhilvarmaconstructions.com/download.ico">
     <link rel="icon" href="https://www.nikhilvarmaconstructions.com/NIKHIL VARMA CONSTRUCTIONS.jpg">
-    <meta name="msapplication-TitleImage" content="https://www.nikhilvarmaconstructions.com/NIKHIL VARMA CONSTRUCTIONS.jpg"/>
+    <meta name="msapplication-TitleImage" content="https://www.nikhilvarmaconstructions.com/NIKHIL VARMA CONSTRUCTIONS.jpg">
   <title>Nikhil Varma Constructions</title>
   <style>
     body {
@@ -149,7 +146,7 @@ footer a:hover {
 
   </style>
 </head>
-<div id="preloader">
+<body><div id="preloader" class="hidden">
   <div class="lego-preloader">
     <div class="brick red"></div>
     <div class="brick blue"></div>
@@ -158,7 +155,7 @@ footer a:hover {
   </div>
 </div>
 
-<body>
+
 <style>
     /* Hide hamburger by default */
 .hamburger {
@@ -198,7 +195,7 @@ footer a:hover {
 
 </style>
   <header>
-   <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+   <button class="hamburger" onclick="toggleMenu()">☰</button>
  <script>
 function toggleMenu() {
   const nav = document.querySelector("header nav");
@@ -212,32 +209,42 @@ function toggleMenu() {
 
     <img src="https://www.nikhilvarmaconstructions.com/NIKHIL VARMA CONSTRUCTIONS.jpg" alt="NVC Logo">
     <nav>
-      <a href="https://www.nikhilvarmaconstructions.com/">Home</a>
-      
-      <a href="profile.html">Projects</a>
-      <a href="contact.html">Contact</a>
-      <a href="career.html">Career</a>
-      <a href="vision&mission.html">Vision & Mission</a>
+     <a href="https://www.nikhilvarmaconstructions.com/">Home</a>
       <a href="about.html">About Us</a>
-      <a href="gallery.html">Gallery</a>
+      <a href="profile.html">Projects</a>
+     
       
+      <a href="vision&amp;mission.html">Vision &amp; Mission</a>
+      
+      <a href="gallery.html">Gallery</a>
+      <a href="career.html">Career</a>
     </nav>
-    <h2 align="right" style="word-break: break-word;">GSTIN:29AARFN8171E1ZQ<h2></h2>
+    <h2 align="right" style="word-break: break-word;">GSTIN:29AARFN8171E1ZQ</h2><h2></h2>
   </header>
-
+  <div class="box"></div>
+  <h1 style="color:rgb(168, 0, 0);padding-left:60px">VILLA PORTFLIO</h1>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <a href="gallery.html" style="padding-left:20px"><button style="background-color:red;font-size:20px;padding-left:30px;clip-path: polygon(0% 50%, 100% 100%, 100% 0%);padding-top:20px;padding-bottom:20px">Back</button></a>
   <style>
     .gal{
 	display: grid;
+  padding:20px;
       grid-template-columns: repeat(2, 1fr);
-      grid-gap: 10px;
+      gap: 5px;
+    }
+    .box{
+        background-color:red;width:50px;height:50px;position:absolute;padding:2px;top:110px;
     }
     @media (max-width: 768px) {
         .gal{
 	display: grid;
       grid-template-columns: repeat(1, 1fr);
       grid-gap: 10px;
+            padding:20px;
     } /* single column on small screens */
+        .box{
+            top:130px;
+        }
       }
 
  .gal img{
@@ -263,7 +270,7 @@ box-sizing: border-box;
 
   </style>
 
-  <div class="gal" id="gallery"></div>
+  <div class="gal" id="gallery"><img src="https://umpfvulyoispjlvsyajv.supabase.co/storage/v1/object/public/villa/main/IMG_20210515_125113.jpg" style="max-width: 500px; border: 2px solid yellow;"><img src="https://umpfvulyoispjlvsyajv.supabase.co/storage/v1/object/public/villa/main/IMG_20210906_101751.jpg" style="max-width: 500px; border: 2px solid yellow;"><img src="https://umpfvulyoispjlvsyajv.supabase.co/storage/v1/object/public/villa/main/IMG_20210913_134125.jpg" style="max-width: 500px; border: 2px solid yellow;"><img src="https://umpfvulyoispjlvsyajv.supabase.co/storage/v1/object/public/villa/main/IMG_20210913_144040.jpg" style="max-width: 500px; border: 2px solid yellow;"><img src="https://umpfvulyoispjlvsyajv.supabase.co/storage/v1/object/public/villa/main/IMG_20210913_144130.jpg" style="max-width: 500px; border: 2px solid yellow;"><img src="https://umpfvulyoispjlvsyajv.supabase.co/storage/v1/object/public/villa/main/IMG_20210913_144133.jpg" style="max-width: 500px; border: 2px solid yellow;"></div>
 
   <script>
     const SUPABASE_URL = "https://umpfvulyoispjlvsyajv.supabase.co"; // your project URL
@@ -310,20 +317,18 @@ box-sizing: border-box;
 
     loadImages();
   </script>
-  </section>
+  
 <section id="contact" class="section">
     <h2 style="text-align:center;">Get in Touch</h2>
     <h1 style="color: green">Contact no: +91 9844052227</h1>
-        <a href="https://api.whatsapp.com/send/?phone=9844052227&text&type=phone_number&app_absent=0"
-            class="shadowed-img"><img src="https://imgur.com/DrrVIiU.jpg" width="50" height="50"><br></a>
-        <a href="tel:+9844052227"><img src="https://imgur.com/nAs3yS9.jpg" class="shadowed-img"
-                width="50" height="50"></a>
+        <a href="https://api.whatsapp.com/send/?phone=9844052227&amp;text&amp;type=phone_number&amp;app_absent=0" class="shadowed-img"><img src="https://imgur.com/DrrVIiU.jpg" width="50" height="50"><br></a>
+        <a href="tel:+9844052227"><img src="https://imgur.com/nAs3yS9.jpg" class="shadowed-img" width="50" height="50"></a>
         <p style="text-align:center; margin: 10px 0; font-size: 16px; word-break: break-word;">
     Email: <a href="mailto:praveenkumar@nikhilvarmaconstructions.com" style="color: green; text-decoration: underline;">
       praveenkumar@nikhilvarmaconstructions.com
     </a>
   </p>
-    </div>
+    
   </section>
   <footer>
     <h2> Quick Links</h2>
@@ -340,7 +345,7 @@ box-sizing: border-box;
     </div>
 
     <div>
-        <a href="vision&misson.html">Vision &amp; mission</a>
+        <a href="vision&amp;misson.html">Vision &amp; mission</a>
     </div>
 
     <div>
@@ -353,15 +358,15 @@ box-sizing: border-box;
     <div>
       <a href="gallery.html">Gallery</a>
   </div>
-    </div>
+    
 
     <div class="contact-info">
         <a href="https://www.google.com/maps/search/%23102,+SRI+SAI+ELENA,+7th+Cross+Right,+Alfa+garden,+K+R+Puram,+Bangagalore-560036./@13.0079665,77.7185704,17z/data=!3m1!4b1?entry=ttu">
             <h1><br><br>OFFICE: #102, SRI SAI ELENA, 7th Cross Right, Alfa garden,
                 K R Puram, Bangalore-560036.</h1>
         </a>
-<a href='https://drive.google.com/file/d/1Dq8ft8OkQ1WINlyYJVxkdavla1o0PTyF/view?usp=drive_link'><img src='9.png'></a><br>
-<a href="https://drive.google.com/file/d/1nkXLiYF4-q0eDSh01Ei7Ef5a82rrSuDv/view?usp=drive_link"><img src='10.png' class='msme'></a>
+<a href="https://drive.google.com/file/d/1Dq8ft8OkQ1WINlyYJVxkdavla1o0PTyF/view?usp=drive_link"><img src="9.png"></a><br>
+<a href="https://drive.google.com/file/d/1nkXLiYF4-q0eDSh01Ei7Ef5a82rrSuDv/view?usp=drive_link"><img src="10.png" class="msme"></a>
 <style>
 .msme{
 width:200px;
@@ -370,7 +375,7 @@ height:auto;
 </style>
         
     
-</footer>
+</div></footer>
 <script>
   window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
@@ -378,6 +383,8 @@ height:auto;
   });
 </script>
 
-</body>
-</html>
 
+
+
+
+</body></html>
