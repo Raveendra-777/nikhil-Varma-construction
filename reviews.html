@@ -389,7 +389,7 @@ function toggleMenu() {
 
     <h2 class="heading">Leave a Review</h2>
 
-    <form class="review-form" name="submit-to-google-sheet">
+    <form id= "rewiew" class="review-form" name="submit-to-google-sheet">
       <input class="form-input" name="name" type="text" id="name" placeholder="Your Name" required />
       <select class="form-select" name="rating" id="rating">
         <option value="5">Rating</option>
@@ -420,75 +420,75 @@ function toggleMenu() {
     </div>
   </div>
 
-  <script>
-const formScriptURL = 'https://script.google.com/macros/s/AKfycbzWu8Zrf04-G5J4BLG7gD2yJvKA1_B_Ez08KYF7ZbOlNSU4NnVIRmIc-V0H0wwqpPVW/exec';
-const form = document.forms['submit-to-google-sheet'];
-let emails = [];
+ <script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwplo36L75hkAY8i8RBaQWYcs-v34ifzDQI3dwXnEe00XTAcF-lXOIyUwaklIXNdyPo/exec";
 
-// Fetch all existing emails
-fetch("https://script.google.com/macros/s/AKfycbxLkbOUOEK0pRTmg8A_Oc57-8IyBVcJji_niK5F-PueKehicL_Wv5ATFOorJGVNjA4Y/exec")
-  .then(res => res.json())
-  .then(data => {
-    emails = data;
-    
+async function getUserLocation() {
+  try {
+    const res = await fetch("https://ipinfo.io/json?token=7fca34311ff76a");
+    const data = await res.json();
+    return data.region + ", " + data.country;
+  } catch(err) {
+    console.warn("Location fetch failed:", err);
+    return "Unknown";
+  }
+}
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
+async function fetchEmails() {
+  const res = await fetch(SCRIPT_URL);
+  return await res.json();  // array of existing emails
+}
 
-      let em = form.email.value.trim().toLowerCase();
-      if (emails.includes(em)) {
-        alert("You have already submitted a review. Thank you!");
-        return;
+document.getElementById('rewiew').addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  const form = e.target;
+  const email = form.email.value.trim().toLowerCase();
+  const existingEmails = await fetchEmails();
+
+  if(existingEmails.includes(email)) {
+    alert("You have already submitted a review. Thank you!");
+    return;
+  }
+
+  const place = await getUserLocation();
+  form.place.value = place;
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(SCRIPT_URL, { method: "POST", body: formData });
+    const result = await response.json();
+
+    if(result.result === "success") {
+      // Show modal with thank you message
+      const modal = document.getElementById('info-modal');
+      const message = document.getElementById('info-message');
+      message.innerText = "Thank you for your feedback!";
+      modal.style.display = "flex";
+
+      // Close modal when clicking OK
+      document.getElementById('ok-link').onclick = function(){
+        window.location.href = "https://www.nikhilvarmaconstructions.com/";
+        return false;
       }
 
-      // First fetch user location
-      fetch("https://ipinfo.io/json?token=7fca34311ff76a")
-        .then(res => res.json())
-        .then(loc => {
-          const state = loc.region || "Unknown";
-          const country = loc.country || "Unknown";
-          document.getElementById("place").value = state + ", " + country;
+      // Close modal when clicking X
+      document.getElementById('close-modal').onclick = function(){
+        modal.style.display = "none";
+      }
 
-          
+      // Reset form
+      form.reset();
+    } else {
+      alert("Error: " + JSON.stringify(result.error));
+    }
+  } catch(err) {
+    console.error(err);
+    alert("Submission failed.");
+  }
+});
 
-          // Now submit the form after location is set
-          fetch(formScriptURL, { method: 'POST', body: new FormData(form) })
-            .then(response => {
-              
-              form.reset();
-              document.getElementById('status').innerHTML = '<strong>Thank you for your review!</strong>';
-              showInfo('Thank you for your feedback!', 'https://www.nikhilvarmaconstructions.com');
-            })
-            .catch(error => console.error('Error!', error.message));
-        })
-        .catch(err => {
-          console.error("Location fetch failed:", err);
-          document.getElementById("place").value = "Unknown";
-
-          // Even if location fails, still submit
-          fetch(formScriptURL, { method: 'POST', body: new FormData(form) })
-            .then(response => {
-              console.log('Success!', response);
-              form.reset();
-              document.getElementById('status').innerHTML = '<strong>Thank you for your review!</strong>';
-              showInfo('Thank you for your feedback!', 'https://www.nikhilvarmaconstructions.com');
-            })
-            .catch(error => console.error('Error!', error.message));
-        });
-    });
-  });
-
-function showInfo(message, href) {
-  document.getElementById('info-message').innerHTML = message;
-  const okLink = document.getElementById('ok-link');
-  okLink.href = href || "#";
-  okLink.onclick = function() {
-    document.getElementById('info-modal').style.display = 'none';
-    if (href) window.location.href = href;
-    return false;
-  };
-  document.getElementById('info-modal').style.display = 'flex';
-}
 </script>
 
   </section>
@@ -561,3 +561,5 @@ height:auto;
 
 </body>
 </html>
+
+here place is not displaying in form
