@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -427,12 +428,15 @@ async function getUserLocation() {
   try {
     const res = await fetch("https://ipinfo.io/json?token=7fca34311ff76a");
     const data = await res.json();
-    return data.region + ", " + data.country;
-  } catch(err) {
+    // Return the location string
+    return data.city + ", " + data.region;
+  } catch (err) {
     console.warn("Location fetch failed:", err);
     return "Unknown";
   }
 }
+
+// Example usage:
 
 async function fetchEmails() {
   const res = await fetch(SCRIPT_URL);
@@ -562,4 +566,4 @@ height:auto;
 </body>
 </html>
 
-here place is not displaying in form
+
