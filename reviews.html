@@ -399,6 +399,8 @@ function toggleMenu() {
         <option value="2">⭐⭐☆☆☆</option>
         <option value="1">⭐☆☆☆☆</option>
       </select>
+      <input type="hidden" name="place" id="place">
+      <input class="form-input" name="email" type="email" id="email" placeholder="Your Email" required />
       <textarea class="form-textarea" name="comment" id="comment" placeholder="Write your review here..." rows="4" required></textarea>
       <input style="display:none;" name="average" type="text" id="average" value="=AVERAGE(B:B)" readonly />
       <input style="display:none;" name="date" type="text" id="date" value="" readonly />
@@ -419,46 +421,76 @@ function toggleMenu() {
   </div>
 
   <script>
-    const today = new Date();
+const formScriptURL = 'https://script.google.com/macros/s/AKfycbzWu8Zrf04-G5J4BLG7gD2yJvKA1_B_Ez08KYF7ZbOlNSU4NnVIRmIc-V0H0wwqpPVW/exec';
+const form = document.forms['submit-to-google-sheet'];
+let emails = [];
 
-  // Format the date as YYYY-MM-DD
-  const formattedDate = today.toISOString().split('T')[0];
-
-  // Set the value of the hidden input
-  document.getElementById('date').value = formattedDate;
-    const formScriptURL = 'https://script.google.com/macros/s/AKfycbzWu8Zrf04-G5J4BLG7gD2yJvKA1_B_Ez08KYF7ZbOlNSU4NnVIRmIc-V0H0wwqpPVW/exec';
-    const dataScriptURL = 'https://script.google.com/macros/s/AKfycbzM3nps_TnHmlLYy_4aRbjTAkdZ5zElIPzdRPx3NjnoOF6mxc4TJm0hdWuyWdVS8JkF/exec';
-    const form = document.forms['submit-to-google-sheet'];
+// Fetch all existing emails
+fetch("https://script.google.com/macros/s/AKfycbxLkbOUOEK0pRTmg8A_Oc57-8IyBVcJji_niK5F-PueKehicL_Wv5ATFOorJGVNjA4Y/exec")
+  .then(res => res.json())
+  .then(data => {
+    emails = data;
+    
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      fetch(formScriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-          console.log('Success!', response);
-          form.reset();
-          document.getElementById('status').innerHTML = '<strong>Thank you for your review!</strong>';
-          console.info('Thank you for your feedback!');
-          showInfo('Thank you for your feedback!', 'https://www.nikhilvarmaconstructions.com'); // Change URL as needed
+
+      let em = form.email.value.trim().toLowerCase();
+      if (emails.includes(em)) {
+        alert("You have already submitted a review. Thank you!");
+        return;
+      }
+
+      // First fetch user location
+      fetch("https://ipinfo.io/json?token=7fca34311ff76a")
+        .then(res => res.json())
+        .then(loc => {
+          const state = loc.region || "Unknown";
+          const country = loc.country || "Unknown";
+          document.getElementById("place").value = state + ", " + country;
+
+          
+
+          // Now submit the form after location is set
+          fetch(formScriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+              
+              form.reset();
+              document.getElementById('status').innerHTML = '<strong>Thank you for your review!</strong>';
+              showInfo('Thank you for your feedback!', 'https://www.nikhilvarmaconstructions.com');
+            })
+            .catch(error => console.error('Error!', error.message));
         })
-        .catch(error => console.error('Error!', error.message));
+        .catch(err => {
+          console.error("Location fetch failed:", err);
+          document.getElementById("place").value = "Unknown";
+
+          // Even if location fails, still submit
+          fetch(formScriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+              console.log('Success!', response);
+              form.reset();
+              document.getElementById('status').innerHTML = '<strong>Thank you for your review!</strong>';
+              showInfo('Thank you for your feedback!', 'https://www.nikhilvarmaconstructions.com');
+            })
+            .catch(error => console.error('Error!', error.message));
+        });
     });
+  });
 
-    function showInfo(message, href) {
-      document.getElementById('info-message').innerHTML = message;
-      const okLink = document.getElementById('ok-link');
-      okLink.href = href || "#";
-      okLink.onclick = function() {
-        document.getElementById('info-modal').style.display = 'none';
-        // Optionally, navigate to the link:
-        if (href) window.location.href = href;
-        return false; // Prevent default link behavior
-      };
-      document.getElementById('info-modal').style.display = 'flex';
-    }
+function showInfo(message, href) {
+  document.getElementById('info-message').innerHTML = message;
+  const okLink = document.getElementById('ok-link');
+  okLink.href = href || "#";
+  okLink.onclick = function() {
+    document.getElementById('info-modal').style.display = 'none';
+    if (href) window.location.href = href;
+    return false;
+  };
+  document.getElementById('info-modal').style.display = 'flex';
+}
+</script>
 
-    // Load Reviews
-    
-  </script>
   </section>
 <section id="contact" class="section">
     <h2 style="text-align:center;">Get in Touch</h2>
@@ -529,4 +561,3 @@ height:auto;
 
 </body>
 </html>
-
