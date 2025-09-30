@@ -834,6 +834,7 @@ Call us at +91-9844052227`, // <-- Replace with actual number
         data.forEach(row => {
           const [name, rating, comment, average] = row;
             const dat = row[4];
+			const place = row[6]
             const date = dat.replace("T18:30:00.000Z","");
           if (!name.trim() && !comment.trim()) return;
 
@@ -844,6 +845,7 @@ Call us at +91-9844052227`, // <-- Replace with actual number
           card.innerHTML = `
             <div class="review-name"><strong>${name}</strong></div>
             <p>${date}</p>
+			<p>${place}</p>
             <div class="review-stars">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</div>
             <p class="review-comment">${comment}</p>
           `;
@@ -1106,5 +1108,6 @@ height:auto;
 
 </body>
 </html>
+
 
 
