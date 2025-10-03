@@ -169,7 +169,28 @@ footer a:hover {
   color: white;
   cursor: pointer;
 }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: #fff;
+  padding-top: 100px; /* same or slightly more than header height */
+}
 
+  header {
+  background: linear-gradient(90deg, #d32f2f, #f57c00);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+    padding-bottom: 20%;
+  position: fixed;   /* makes it stick */
+  top: 0;            /* pins it to the very top */
+  left: 0;
+  width:100%;      /* full width */
+  z-index: 1000;     /* keeps it above other elements */
+}
 /* Mobile styles */
 @media (max-width: 768px) {
   header nav {
@@ -191,9 +212,29 @@ footer a:hover {
     display: block; /* show hamburger on mobile */
   }
 
+  body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: #fff;
+  padding-top: 100px; /* same or slightly more than header height */
+}
+
   header {
-    position: relative; /* so menu is positioned correctly */
-  }
+  background: linear-gradient(90deg, #d32f2f, #f57c00);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+    padding-bottom: 20%;
+  position: fixed;   /* makes it stick */
+  top: 0;            /* pins it to the very top */
+  left: 0;
+        /* full width */
+  z-index: 1000;     /* keeps it above other elements */
+}
+	
 }
 
 </style>
@@ -388,6 +429,7 @@ height:auto;
 
 </body>
 </html>
+
 
 
 
