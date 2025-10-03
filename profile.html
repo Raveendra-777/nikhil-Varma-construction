@@ -166,7 +166,28 @@ footer a:hover {
   color: white;
   cursor: pointer;
 }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: #fff;
+  padding-top: 100px; /* same or slightly more than header height */
+}
 
+  header {
+  background: linear-gradient(90deg, #d32f2f, #f57c00);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+    padding-bottom: 20%;
+  position: fixed;   /* makes it stick */
+  top: 0;            /* pins it to the very top */
+  left: 0;
+  width: 100%;       /* full width */
+  z-index: 1000;     /* keeps it above other elements */
+}
 /* Mobile styles */
 @media (max-width: 768px) {
   header nav {
@@ -182,15 +203,35 @@ footer a:hover {
 
   header nav a {
     margin: 10px 0;
+    
   }
 
   .hamburger {
     display: block; /* show hamburger on mobile */
   }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: #fff;
+  padding-top: 100px; /* same or slightly more than header height */
+}
 
   header {
-    position: relative; /* so menu is positioned correctly */
-  }
+  background: linear-gradient(90deg, #d32f2f, #f57c00);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+    padding-bottom: 20%;
+  position: fixed;   /* makes it stick */
+  top: 0;            /* pins it to the very top */
+  left: 0;
+        /* full width */
+  z-index: 1000;     /* keeps it above other elements */
+}
+
 }
 
 </style>
@@ -223,37 +264,599 @@ function toggleMenu() {
     <h2 align="right" style="word-break: break-word;">GSTIN:29AARFN8171E1ZQ</h2><h2></h2>
   </header>
 
-  <div id="pro" style="display: block;">
+  <div id="pro" style="display: block; padding:50px">
       <h1 align="center" style="color:red">
 PROFILE</h1>
-<div style="background-color:red;width:50px;height:50px;position:absolute;right:0"></div>
+
+<section>
+  
+  <h1 align="center" style="color:rgba(204, 2, 2, 0.767);font-family: 'Brush Script MT', cursive; font-size:60px;font-weight: 100;">Defining Construction Excellence</h1>
+  <p style="font-size: 25px;padding:0 20px 0 20px"> Established in 2020,<b> Nikhil Varma Constructions</b> is a
+ Bangalore-based firm driven by a passion for building
+ strong, lasting structures with integrity and precision. We are
+ committed to delivering <b>Quality construction</b> solutions that
+ reflect our core values of<b style="color:red"> Trust, Transparency & Time Bound.</b>
+ With a focus on technical accuracy, timely execution, and
+ customer satisfaction, we approach every project as an
+ opportunity to create something meaningful. Our steady
+ growth & strong client relationships stand as a testament to
+ the reliability, consistency & professionalism we bring to the
+ construction industry.</p>
+</section>
+<style>
+   .ask:hover{
+    background-color: #007bff;
+  }
+.ask {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+} 
+</style>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #d32f2f, #f57c00);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .process-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .rocket {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .rocket img {
+      width: 80px;
+      animation: launch 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes launch {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .step {
+      background: white;
+      border-left: 6px solid #d32f2f;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .step::before {
+      content: attr(data-step);
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      background: #f57c00;
+      color: white;
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 1.2em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .step h2 {
+      margin-top: 0;
+      color: #d32f2f;
+    }
+
+    footer {
+      background: #363636;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      .step::before {
+        top: -15px;
+        left: -15px;
+        font-size: 1em;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+      <style>
+    .body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f9fc;
+      padding: 30px;
+      
+      
+      
+      
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      align-items: center;
+      padding : 20px;
+      display:math;
+    }
+
+    .average-rating {
+      font-size: 1.3em;
+      color: #ff9800;
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .heading {
+      text-align: center;
+    }
+
+    .review-form {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .form-button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      color: white;
+      border: none 1px solid #ccc;
+      font-weight: bold;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .form-button:hover {
+      background-color: #0056b3;
+    }
+
+    .status-message {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    .form-button{
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-weight: bold;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      
+    }
+
+    .reviews-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    overflow:auto;
+        height:300px;
+    
+    }
+    
+
+    .review-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .review-name {
+      font-size: 1.1em;
+    }
+
+    .review-stars {
+      color: #FFA500;
+      font-size: 20px;
+      margin: 5px 0;
+    }
+
+    .review-comment {
+      margin: 0;
+    }
+  </style>
+  <section id="projects" class="section" style="background:#f7f7f7;">
+   <div display="flex" align="left">
+    <div style="background-color:red;width:15px;height:30px;position:absolute;"></div>
+    <h2 style="color:red;padding-left:20px;" align="left">CIVIL CONSTRUCTION & DEVELOPMENT</h2>
+    <p align="left" style="font-size: 20px;"><b>At Nikhil Varma Constructions, we specialize in delivering
+ robust and reliable civil construction and development
+ solutions tailored to meet the unique needs of each project.
+ From site preparation to structural execution, we handle
+ every aspect with precision, quality, and safety in mind. Our
+ team ensures that each structure is built to last, using the
+ best materials, techniques, and industry practices to bring
+ architectural visions to life while adhering to timelines and
+ regulatory standards.</b></p>
+    </div>
+    <br>
+    <div display="flex" align="right">
+    <div style="background-color:red;width:15px;height:30px;position: absolute;right :5%;"></div>
+    <h2 style="color:red;padding-right:20px;" align="right">RCC PRECAST COMPOUND WALLS</h2>
+    <div style="display:flex;"></div>
+    <span style="flex:1;">
+    <img src="Rcc.jpg" align="right" style="display:block;padding:10px;max-width:300px;width:fit-content;height:fit-content;right:0;border-radius:0 100px 0 100px;">
+
+    <p align="right" style="font-size: 20px;padding-right:auto;padding-top:30px"><b><br>We provide durable and cost-effective
+ walls that ensure quick installation &
+ long-lasting performance. Designed for
+ strength, security & stability, our precast
+ solutions offer excellent protection and a
+ clean finish for residential, commercial,
+ and industrial properties.</b></p>
+    </span>
+    
+
+    </div>
+    <div display="flex" align="left">
+    <div style="background-color:red;width:15px;height:30px;position: absolute;"></div>
+    <h2 style="color:red;padding-left:20px;" align="left"> STRUCTURE REPAIRS</h2>
+    <div style="display:flex;"></div>
+    <span style="flex:1;">
+    <img src="SR.webp" align="left" style="display:block;padding:10px;max-width:300px;width:fit-content;height:fit-content;right:0;border-radius:100px 0 100px 0;">
+
+    <p align="left" style="font-size: 20px;padding-right:auto;padding-top:30px"><b><br>We offer reliable solution to restore the
+ integrity and safety of damaged or aging
+ buildings. Using proven techniques and
+ quality materials, we address cracks,
+ deterioration, and structural weaknesses
+ to extend the life and strength of your
+ construction.</b></p>
+    </span>
+    
+
+    </div>
+    <div display="flex" align="right">
+    <div style="background-color:red;width:15px;height:30px;position: absolute;right :5%;"></div>
+    <h2 style="color:red;padding-right:20px;" align="right"> WATERPROOFING </h2>
+    <div style="display:flex;"></div>
+    <span style="flex:1;">
+    <img src="WP.jpg" align="right" style="display:block;padding:10px;max-width:300px;width:fit-content;height:fit-content;right:0;border-radius:0 100px 0 100px;">
+
+    <p align="right" style="font-size: 20px;padding-right:auto;padding-top:30px"><b><br> Our waterproofing solutions are
+ designed to protect structures from
+ water damage, leakage, and dampness.
+ We use high-quality materials and
+ proven methods to ensure long-lasting
+ protection for roofs, basements, walls,
+ and terraces—enhancing the durability
+ and safety of every building.
+</b></p>
+    </span>
+    
+
+    </div>
+    <div display="flex" align="left">
+    <div style="background-color:red;width:15px;height:30px;position: absolute;"></div>
+    <h2 style="color:red;padding-left:20px;" align="left"> MS STRUCTURAL WORKS</h2>
+    <div style="display:flex;"></div>
+    <span style="flex:1;">
+    <img src="msw.jpg" align="left" style="display:block;padding:10px;max-width:300px;width:fit-content;height:fit-content;right:0;border-radius:100px 0 100px 0;">
+
+    <p align="left" style="font-size: 20px;padding-right:auto;padding-top:30px"><b><br> We deliver precise and robust MS (Mild
+ Steel) structural works for various
+ construction needs, including frames,
+ trusses, platforms, and support structures.
+ Our fabrication and installation services
+ ensure strength, stability, and seamless
+ integration into your building design.</b></p>
+    </span>
+    
+
+    </div>
+    <div display="flex" align="right">
+    <div style="background-color:red;width:15px;height:30px;position: absolute;right :5%;"></div>
+    <h2 style="color:red;padding-right:20px;" align="right"> STP WORKS</h2>
+    <div style="display:flex;"></div>
+    <span style="flex:1;">
+    <img src="stp.jpg" align="right" style="display:block;padding:10px;max-width:300px;width:fit-content;height:fit-content;right:0;border-radius:0 100px 0 100px;">
+
+    <p align="right" style="font-size: 20px;padding-right:auto;padding-top:30px"><b><br>We provide complete STP (Sewage
+ Treatment Plant) works, including
+ earthwork, structural construction, and
+ installation support. Our solutions are
+ designed to meet environmental
+ standards, ensuring efficient wastewater
+ management and sustainable
+ infrastructure for residential and
+ commercial projects.</b></p>
+    </span>
+    
+
+    </div>
+    <div display="flex" align="left">
+    <div style="background-color:red;width:15px;height:30px;position: absolute;"></div>
+    <h2 style="color:red;padding-left:20px;" align="left">  CONCRETE FLOORING & FINISHING</h2>
+    <div style="display:flex;"></div>
+    <span style="flex:1;">
+    <img src="ff.jpg" align="left" style="display:block;padding:10px;max-width:300px;width:fit-content;height:fit-content;right:0;border-radius:100px 0 100px 0;">
+
+    <p align="left" style="font-size: 20px;padding-right:auto;padding-top:30px"><b><br> We offer high-quality concrete flooring
+ with smooth and durable finishing,
+ suitable for both industrial and
+ residential applications. Our services
+ include precise leveling, IPS and floater
+ finishes, ensuring a clean, strong, and
+ long-lasting surface with minimal
+ maintenance.</b></p>
+    </span>
+    
+     <br>
+     <br>
+    </div>
+    <div display="flex" align="right">
+    <div style="background-color:red;width:15px;height:30px;position:absolute;right:5%"></div>
+    <h2 style="color:red;padding-right:20px;" align="right">VILLA & COMMERCIAL CONSTRUCTION</h2>
+    <p align="right" style="font-size: 20px;"><b> We specialize in the construction of premium
+ villas and commercial spaces with a focus on
+ quality, functionality, and aesthetic appeal.
+ From concept to completion, we ensure
+ structurally sound, well-designed buildings
+ that meet client expectations and comply with
+ all regulatory standards..</b></p>
+    </div>
+  </section>
+<section class="stats-section">
+  <div class="stat-card">
+    <div class="hexagon">🤝</div>
+    <h3>25+ YEARS</h3>
+    <p>Experience</p>
+  </div>
+  <div class="stat-card">
+    <div class="hexagon">🌐</div>
+    <h3>40+ Locations</h3>
+    <p>Across the City</p>
+  </div>
+  <div class="stat-card">
+    <div class="hexagon">👥</div>
+    <h3>30+ Projects</h3>
+    <p>Delivered</p>
+  </div>
+  <div class="stat-card">
+    <div class="hexagon">🏢</div>
+    <h3>50+ Clients</h3>
+    <p>Across City</p>
+  </div>
+</section>
+<style>
+    .stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.stat-card {
+  background: #d32f2f;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.hexagon {
+  width: 80px;
+  height: 45px;
+  background: #d32f2f;
+  color: white;
+  font-size: 28px;
+  line-height: 45px;
+  margin: 0 auto 10px;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+</style>
+  <section class="essence-section">
+  <div class="essence-card">
+    <h2>Our Vision</h2>
+    <p>To be recognized as a trusted and innovative construction company known for delivering quality projects that stand the test of time.</p>
+  </div>
+  <div class="essence-card">
+    <h2>Our Mission</h2>
+    <p>To consistently deliver reliable, safe, and high-standard construction solutions while building long-term relationships through integrity and excellence.</p>
+  </div>
+  <div class="essence-card">
+    <h2>Our Values</h2>
+    <ul>
+      <li>Quality First</li>
+      <li>Integrity</li>
+      <li>Timely Delivery</li>
+      <li>Customer Focus</li>
+      <li>Innovation</li>
+      <li>Safety</li>
+    </ul>
+  </div>
+</section>
+<style>
+    .essence-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  flex-wrap: wrap;
+}
+
+.essence-card {
+  background: #fff;
+  border: 2px solid #d32f2f;
+  border-radius: 12px;
+  padding: 30px 20px;
+  max-width: 350px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.essence-card h2 {
+  color: #d32f2f;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.essence-card p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.essence-card ul {
+  
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.essence-card ul li {
+  margin: 6px 0;
+}
+@media (max-width: 768px) {
+  .essence-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .essence-card {
+    width: 90%;
+  }
+}
+
+</style>
+  <section>
+
+    <section>
+   
+
+  <div style="background-color:#d32f2f; width:50px; height:50px;position:absolute;right:0"></div>
+  <h1 style="color:#d32f2f;padding-right:60px" align="right">OUR PROCESS</h1>
+  <div class="process-container">
+    
+    <div class="step" data-step="1">
+      <h2>Client Consultation</h2>
+      <p>We begin with a detailed client consultation and site inspection to assess requirements, expectations, and project feasibility.</p>
+    </div>
+
+    <div class="step" data-step="2">
+      <h2>Planning & Estimation</h2>
+      <p>Based on the site study, we provide a clear quotation, timeline, and project plan tailored to your budget and goals.</p>
+    </div>
+
+    <div class="step" data-step="3">
+      <h2>Execution & Monitoring</h2>
+      <p>Our skilled team carries out the construction with precision, while our supervision team ensures quality and safety at every stage.</p>
+    </div>
+
+    <div class="step" data-step="4">
+      <h2>Launch & Marketing</h2>
+      <p>We conduct thorough quality checks before timely handover, along with post-completion maintenance guidance.</p>
+    </div>
+  </div>
+</section>
 <h1 style="color:red;padding-right:60px" align="right">FINANCIALS</h1>
+<div style="display:flex;justify-content:center;align-items:center;width:100%;padding:20px;">
+  <!-- Outer container (acts like border) -->
+  <div style="width:50%;
+              padding:15px; /* thickness of border */
+              border-radius:80px 0 80px 0;
+              background:linear-gradient(#d32f2f, #ffffff);
+              display:inline-block;">
+              
+    <!-- Inner image with same curve -->
+    <img src="f.jpg" 
+         style="width:100%;height:auto;display:block;
+                border-radius:80px 0 80px 0;">
+  </div>
+</div>
+
+
+
 <h2 style="color:rgb(211, 0, 0);" align="center">Nikhil Varma Constructions - Business Turnover</h2>
 <table bgcolor="black">
-</table><table border="1" style="border-color:red;border-width:2px;">
+</table><table border="1" style="border-color:red;border-width:2px;" class="t" align="center">
   <tbody><tr border="1" style="background-color:rgb(204, 0, 0);border-width:2px;">
     <style>
-      
+       .t{
+        margin: 20px auto;       /* centers table */
+  border-collapse: collapse;
+  width: 60%;
+  font-size: 18px;
+  text-align: center;
+
+      }
       .t1{
-        width:1%;
-        padding:10px;
+        
+       
         font-size: 20px;
         color: white;
       }
       .t2{
-        width:1%;
-        padding:10px;
+       
+        
         font-size: 20px;
         color: white;
       }
       .t3{
-        width:1%;
-        padding:10px;
+        
+        
         font-size: 20px;
         color: white;
       }
       .t4{
-        padding:20px;
+        
         font-size: 30px;
       }
     </style>
@@ -268,7 +871,7 @@ PROFILE</h1>
   <th class="t4"> ₹43,26,679.00/-</th>
   </tr>
   <tr>
-  <th>2</th>
+  <th class="t4">2</th>
   <th class="t4">2022-2023</th>
   <th class="t4"> ₹84,50,440.00/-</th>
   </tr>
@@ -286,7 +889,7 @@ PROFILE</h1>
 </tbody></table>
 <br>
 <br>
-<h1 style="color:white"><b>“Customers
+<h1 style="color:rgb(0, 0, 0)"><b>“Customers
 satisfaction”</b> is our main concern, we are working hard every day to assert themselves and
 preserve the trust of customers.
 </h1>
@@ -366,4 +969,3 @@ height:auto;
 
 
 </body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
-
