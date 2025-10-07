@@ -1,44 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
+  <!-- Home Page -->
   <url>
     <loc>https://www.nikhilvarmaconstructions.com/</loc>
     <priority>1.00</priority>
+    <image:image>
+      <image:loc>https://www.nikhilvarmaconstructions.com/images/home-banner.jpg</image:loc>
+      <image:caption>Welcome to Nikhil Varma Constructions</image:caption>
+    </image:image>
   </url>
 
+  <!-- About -->
   <url>
     <loc>https://www.nikhilvarmaconstructions.com/about.html</loc>
     <priority>0.80</priority>
   </url>
 
+  <!-- Profile -->
   <url>
     <loc>https://www.nikhilvarmaconstructions.com/profile.html</loc>
     <priority>0.80</priority>
   </url>
 
+  <!-- Vision & Mission -->
   <url>
     <loc>https://www.nikhilvarmaconstructions.com/vision-mission.html</loc>
     <priority>0.70</priority>
   </url>
 
+  <!-- Contact -->
   <url>
     <loc>https://www.nikhilvarmaconstructions.com/contact.html</loc>
     <priority>0.80</priority>
   </url>
 
+  <!-- Career -->
   <url>
     <loc>https://www.nikhilvarmaconstructions.com/career.html</loc>
     <priority>0.70</priority>
   </url>
 
+  <!-- Gallery -->
   <url>
     <loc>https://www.nikhilvarmaconstructions.com/gallery.html</loc>
     <priority>0.70</priority>
+    <image:image>
+      <image:loc>https://www.nikhilvarmaconstructions.com/images/gallery1.jpg</image:loc>
+      <image:caption>Residential Construction Project</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nikhilvarmaconstructions.com/images/gallery2.jpg</image:loc>
+      <image:caption>Commercial Building Project</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Services -->
+  <url>
+    <loc>https://www.nikhilvarmaconstructions.com/services/commercial-construction.html</loc>
+    <priority>0.90</priority>
   </url>
 
   <url>
-    <loc>https://www.nikhilvarmaconstructions.com/services.html</loc>
+    <loc>https://www.nikhilvarmaconstructions.com/services/residential-construction.html</loc>
     <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://www.nikhilvarmaconstructions.com/services/wall-construction.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.nikhilvarmaconstructions.com/services/industrial-fabrication.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.nikhilvarmaconstructions.com/services/development-services.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.nikhilvarmaconstructions.com/services/excavation-services.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.nikhilvarmaconstructions.com/services/construction-services.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.nikhilvarmaconstructions.com/services/new-items.html</loc>
+    <priority>0.80</priority>
   </url>
 
 </urlset>
