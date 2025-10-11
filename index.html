@@ -407,7 +407,7 @@ function toggleMenu() {
   
   <div class="body">
   <div class="container">
-    <div class="average-rating" id="ar">Average Rating: 0★</div>
+    
     <style>
    .ask:hover{
     background-color: #007bff;
@@ -653,9 +653,7 @@ function shareMessage() {
 We hope you had an amazing experience with us.
 
 Please click here to leave a review for Industrial Building Construction Service:
-
-https://www.nikhilvarmaconstructions.com/reviews.html
-
+https://g.page/r/Cf_osSdPT3dEEBM/review
 From
 Nikhil Varma Constructions, Bengaluru
 IndiaMART Verified Supplier
@@ -671,49 +669,9 @@ Call us at +91-9844052227`, // <-- Replace with actual number
 }
 </script>
     
-    <div class="status-message" id="status"></div>
-    <div class="reviews-container" id="reviews"></div>
-    <a href="reviews.html"><button class="form-button">Leave a Review</button></a>
-  </div>
+   <div class="trustindex-desktop">
+  <script src="https://cdn.trustindex.io/loader.js?17142ba55a409218b696ce2922a"></script>
 </div>
-  <script>
-    const formScriptURL = 'https://script.google.com/macros/s/AKfycbzWu8Zrf04-G5J4BLG7gD2yJvKA1_B_Ez08KYF7ZbOlNSU4NnVIRmIc-V0H0wwqpPVW/exec';
-    const dataScriptURL = 'https://script.google.com/macros/s/AKfycbzM3nps_TnHmlLYy_4aRbjTAkdZ5zElIPzdRPx3NjnoOF6mxc4TJm0hdWuyWdVS8JkF/exec';
-    const form = document.forms['submit-to-google-sheet'];
-
-    
-
-    // Load Reviews
-    fetch(dataScriptURL)
-      .then(response => response.json())
-      .then(data => {
-        const reviewsContainer = document.getElementById("reviews");
-        const avgDisplay = document.getElementById("ar");
-
-        data.forEach(row => {
-          const [name, rating, comment, average] = row;
-            const dat = row[4];
-			const place = row[6]
-            const date = dat.replace("T"," ");
-            const onlyDate = date.split(" ")[0];
-          if (!name.trim() && !comment.trim()) return;
-
-          avgDisplay.innerText = `Average Rating: ${average}★`;
-
-          const card = document.createElement("div");
-          card.classList.add("review-card");
-          card.innerHTML = `
-            <div class="review-name"><strong>${name}</strong></div>
-            <p>${onlyDate}</p>
-			<p>${place}</p>
-            <div class="review-stars">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</div>
-            <p class="review-comment">${comment}</p>
-          `;
-          reviewsContainer.appendChild(card);
-        });
-      })
-      .catch(err => console.error("Error loading data:", err));
-  </script>
   </section>
 <section id="contact" class="section">
     <h2 style="text-align:center;" align="center">Get in Touch</h2>
@@ -968,7 +926,6 @@ height:auto;
 
 </body>
 </html>
-
 
 
 
