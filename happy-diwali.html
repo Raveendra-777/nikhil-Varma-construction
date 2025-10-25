@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nikhil Varma Constructions - Happy Diwali</title>
+  
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    #canvas {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+    #videoElement2 {
+      position: absolute;
+      display: none;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+    
+  <video id="videoElement" autoplay playsinline style="display:none;"></video>
+  <video id="videoElement2" autoplay playsinline muted>
+    <source src="Diwali (1).mp4" type="video/mp4">
+  </video>
+  <canvas id="canvas"></canvas>
+   
+  
+  <script>
+    const video = document.getElementById('videoElement');
+    const video2 = document.getElementById('videoElement2');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const targetColor = { r: 200, g: 0, b: 0 }; // Red
+    const tolerance = 80;
+
+    async function startVideo() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+        video.onloadedmetadata = () => {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          detectColor();
+        };
+      } catch (error) {
+        console.error('Error accessing webcam:', error);
+      }
+    }
+
+    function colorDistance(r1, g1, b1, r2, g2, b2) {
+      return Math.sqrt((r1 - r2)**2 + (g1 - g2)**2 + (b1 - b2)**2);
+    }
+
+    function detectColor() {
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const pixels = frame.data;
+
+      let minX = canvas.width, minY = canvas.height, maxX = 0, maxY = 0;
+      for (let i = 0; i < pixels.length; i += 4) {
+        const r = pixels[i];
+        const g = pixels[i + 1];
+        const b = pixels[i + 2];
+        const distance = colorDistance(r, g, b, targetColor.r, targetColor.g, targetColor.b);
+
+        if (distance < tolerance) {
+          const pixelIndex = i / 4;
+          const x = pixelIndex % canvas.width;
+          const y = Math.floor(pixelIndex / canvas.width);
+          minX = Math.min(minX, x);
+          minY = Math.min(minY, y);
+          maxX = Math.max(maxX, x);
+          maxY = Math.max(maxY, y);
+        }
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      if (maxX > minX && maxY > minY) {
+        const width = maxX - minX;
+        const height = maxY - minY;
+        const posX = minX;
+        const posY = minY;
+
+        // Draw bounding box
+        
+        
+
+        // Convert canvas coordinates to CSS pixels
+        const scaleX = canvas.clientWidth / canvas.width;
+        const scaleY = canvas.clientHeight / canvas.height;
+
+        video2.style.left = `${posX * scaleX}px`;
+        video2.style.top = `${posY * scaleY}px`;
+        
+        video2.style.height = `${height * scaleY}px`;
+        video2.style.display = 'block';
+        video2.play();
+
+        console.log(`Position: (${posX}, ${posY}) | Width: ${width}px | Height: ${height}px`);
+      } else {
+        video2.style.display = 'none';
+      }
+
+      requestAnimationFrame(detectColor);
+    }
+
+    startVideo();
+  </script>
+</body>
+</html>
