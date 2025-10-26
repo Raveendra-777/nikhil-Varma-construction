@@ -24,19 +24,19 @@
 <body>
     
   <video id="videoElement" autoplay playsinline style="display:none;"></video>
-  <video id="videoElement2" autoplay playsinline>
+  <video id="videoElement2" autoplay playsinline >
     <source src="Diwali (1).mp4" type="video/mp4">
   </video>
   <canvas id="canvas"></canvas>
    
   
   <script>
-    const video = document.getElementById('videoElement');
+    const video = document.getElementById("videoElement");
     const video2 = document.getElementById('videoElement2');
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
 
-    const targetColor = { r: 200, g: 0, b: 0 }; // Red
+    const targetColor = { r: 77, g: 0, b: 193 }; // Red
     const tolerance = 80;
 
     async function startVideo() {
