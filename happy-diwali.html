@@ -10,9 +10,10 @@
       overflow: hidden;
     }
     #canvas {
-      width: 100%;
-      height: fit-content;
+      width: 100vw;
+      height: 100vh;
       display: block;
+      position: static;
     }
     #videoElement2 {
       position: absolute;
@@ -36,7 +37,7 @@
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
 
-    const targetColor = { r: 77, g: 0, b: 193 }; // Red
+    const targetColor = { r: 0, g: 255, b: 26 }; // Red
     const tolerance = 80;
 
     async function startVideo() {
